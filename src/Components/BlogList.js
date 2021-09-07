@@ -8,7 +8,10 @@ export default function BlogList(props) {
 		<>
 			<h2 className="mb-3">{props.title}</h2>
 			<ul className="list-group list-unstyled">
-				{blogs}
+				{blogs.length !== 0 ? blogs : <div className="alert alert-warning" role="alert">
+					<strong>No blogs right now.</strong>
+				</div>
+				}
 			</ul>
 		</>
 	)
