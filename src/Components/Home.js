@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
-import {BlogData} from "../BlogData";
 import BlogList from "./BlogList";
 
 function Home() {
-	const [blogs, setblog] = useState(BlogData);
+	const [blogs, setblog] = useState(null);
+	const [isPending, setPending] = useState(true)
 	const handleDelete = (id) => {
 		setblog(blogs => blogs.filter(blog => blog.id !== id));
 	}
 
 	useEffect(() => {
-		console.log('Use Effect ran ');
+		fetch('http://localhost:8000/blogs').then((res) => res.json()).then(data => {
+			setblog(data)
+			setPending(false);
+		})
 	}, [])
 
 	return (
 		<>
 			<div className="container mt-5">
-				<BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
+				{isPending && <div className="spinner-border" role="status"> <span className="visually-hidden">Loading...</span> </div>}
+				{blogs && <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />}
 			</div>
 		</>
 	);

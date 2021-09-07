@@ -1,5 +1,7 @@
 @import url('//fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
 @import url('//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 body {
 	font-family: 'Quicksand', sans-serif;
 }
