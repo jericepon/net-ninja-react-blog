@@ -5,11 +5,19 @@ const Create = () => {
 	const [body, setBody] = useState("");
 	const [author, setAuthor] = useState("");
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const blog = { title, body, author };
+		
+		console.log(blog);
+	};
+
 	return (
 		<div className="create">
 			<div className="w-75 mx-auto">
 				<h1 className="mb-4">Add a new blog</h1>
-				<form action="" className="form">
+				<form className="form" method="post" onSubmit={handleSubmit}>
 					<div className="mb-3">
 						<label htmlFor="title" className="form-label">
 							Blog title:
@@ -56,7 +64,7 @@ const Create = () => {
 					</div>
 					<div className="mt-5">
 						<button
-							type="button"
+							type="submit"
 							name=""
 							id=""
 							className="btn btn-primary"
