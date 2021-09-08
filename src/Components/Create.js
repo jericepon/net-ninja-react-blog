@@ -4,13 +4,21 @@ const Create = () => {
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
 	const [author, setAuthor] = useState("");
+	const [isPending, setPending] = useState(false);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
 		const blog = { title, body, author };
-		
-		console.log(blog);
+
+		setPending(true);
+
+		fetch("http://localhost:8000/blogs", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(blog),
+		}).then(() => {
+			setPending(false);
+		});
 	};
 
 	return (
@@ -27,7 +35,7 @@ const Create = () => {
 							name="title"
 							id=""
 							className="form-control"
-							placeholder=""
+							required
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
 						/>
@@ -42,6 +50,7 @@ const Create = () => {
 							name="body"
 							id=""
 							rows="3"
+							required
 							onChange={(e) => setBody(e.target.value)}
 							value={body}
 						></textarea>
@@ -52,6 +61,7 @@ const Create = () => {
 							Blog author:
 						</label>
 						<select
+							required
 							className="form-select"
 							name="author"
 							onChange={(e) => setAuthor(e.target.value)}
@@ -65,11 +75,20 @@ const Create = () => {
 					<div className="mt-5">
 						<button
 							type="submit"
-							name=""
-							id=""
 							className="btn btn-primary"
 						>
-							Add blog
+							{isPending ? (
+								<>
+									<span
+										className="spinner-border spinner-border-sm me-3"
+										role="status"
+										aria-hidden="true"
+									></span>
+									<span className="">Loading...</span>
+								</>
+							) : (
+								`Add blog`
+							)}
 						</button>
 					</div>
 				</form>
