@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function BlogItem({ blog, handleDelete }) {
-	
+function BlogItem({ blog }) {
+
+
 	return (
 		<li className="mb-4">
 			<div className="card text-start">
@@ -11,16 +12,9 @@ function BlogItem({ blog, handleDelete }) {
 						<Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
 					</h4>
 
-					<p className="text-muted"><strong>{blog.author}</strong></p>
-					<button
-						onClick={() => {
-							handleDelete(blog.id);
-						}}
-						type="button"
-						className="btn btn-danger"
-					>
-						Delete
-					</button>
+					<p className="text-muted">
+						<strong>{blog.author}</strong>
+					</p>
 				</div>
 			</div>
 		</li>

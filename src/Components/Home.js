@@ -4,11 +4,8 @@ import BlogList from "./BlogList";
 
 function Home() {
 
-	const { data: blogs, isPending, error, setData } = useFetch('http://localhost:8000/blogs')
+	const { data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs')
 
-	const handleDelete = (id) => {
-		setData((blogs) => blogs.filter((blog) => blog.id !== id));
-	};
 
 	return (
 		<div>
@@ -23,7 +20,7 @@ function Home() {
 				</div>
 				</div>
 			)}
-			{blogs && (<BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />)}
+			{blogs && (<BlogList blogs={blogs} title="All Blogs" />)}
 		</div>
 	);
 }

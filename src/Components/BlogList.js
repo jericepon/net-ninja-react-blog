@@ -2,7 +2,7 @@ import BlogItem from "./BlogItem";
 
 export default function BlogList(props) {
 	const blogs = props.blogs.map((blog) => (
-		<BlogItem blog={blog} key={blog.id} handleDelete={props.handleDelete} />
+		<BlogItem blog={blog} key={blog.id}/>
 	));
 	return (
 		<>
