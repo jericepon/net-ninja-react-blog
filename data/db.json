@@ -1,10 +1,16 @@
 {
   "blogs": [
     {
-      "title": "Test 1 ",
-      "body": "Test 1",
-      "author": "John",
-      "id": 1
+      "title": "The quick brow fox jumps",
+      "body": "The quick brow fox jumps",
+      "author": "Lucas",
+      "id": 2
+    },
+    {
+      "title": "The quick brow fox jumps",
+      "body": "asf adfa sf",
+      "author": "Lucas",
+      "id": 3
     }
   ]
 }
