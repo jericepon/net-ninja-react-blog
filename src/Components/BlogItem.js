@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function BlogItem({ blog, handleDelete }) {
+	
 	return (
 		<li className="mb-4">
 			<div className="card text-start">

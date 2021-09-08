@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Create = () => {
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
 	const [author, setAuthor] = useState("");
 	const [isPending, setPending] = useState(false);
+	const history = useHistory();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -18,6 +20,7 @@ const Create = () => {
 			body: JSON.stringify(blog),
 		}).then(() => {
 			setPending(false);
+			history.push("/");
 		});
 	};
 
@@ -73,10 +76,7 @@ const Create = () => {
 						</select>
 					</div>
 					<div className="mt-5">
-						<button
-							type="submit"
-							className="btn btn-primary"
-						>
+						<button type="submit" className="btn btn-primary">
 							{isPending ? (
 								<>
 									<span
